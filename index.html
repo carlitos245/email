@@ -52,11 +52,20 @@
         .company-info, .client-info {
             width: 48%;
         }
+        .mic-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 10px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <center><h1>Formulaire Vitrier Miroitier</h1></center>
+        <h1>Formulaire Vitrier Miroitier</h1>
         <div class="header">
             <div class="company-info">
                 <h2>Entreprise</h2>
@@ -73,7 +82,7 @@
             </div>
         </div>
 
-        <form id="vitrier-form" action="mailto:votre-email@example.com" method="post" enctype="text/plain">
+        <form id="vitrier-form" action="ccal2@vitreclair.fr" method="post" enctype="text/plain">
             <h2>Détails de la commande</h2>
             
             <label for="type-verre">Type de verre :</label>
@@ -96,9 +105,6 @@
 
             <label for="dimensions">Dimensions (en cm) :</label>
             <input type="text" id="dimensions" name="dimensions" placeholder="Largeur x Hauteur" required>
-            
-            <label for="epaisseur">Épaisseur du verre (en mm) :</label>
-            <input type="text" id="epaisseur" name="epaisseur" min="1" required>
 
             <label for="quantite">Quantité :</label>
             <input type="number" id="quantite" name="quantite" min="1" required>
@@ -120,9 +126,33 @@
 
             <label for="commentaires">Commentaires supplémentaires :</label>
             <textarea id="commentaires" name="commentaires" rows="4"></textarea>
+            <button type="button" class="mic-button" onclick="startDictation()">🎤</button>
 
             <button type="submit">Envoyer la commande</button>
         </form>
     </div>
+
+    <script>
+        function startDictation() {
+            if (window.hasOwnProperty('webkitSpeechRecognition')) {
+                var recognition = new webkitSpeechRecognition();
+
+                recognition.continuous = false;
+                recognition.interimResults = false;
+
+                recognition.lang = "fr-FR";
+                recognition.start();
+
+                recognition.onresult = function(e) {
+                    document.getElementById('commentaires').value = e.results[0][0].transcript;
+                    recognition.stop();
+                };
+
+                recognition.onerror = function(e) {
+                    recognition.stop();
+                }
+            }
+        }
+    </script>
 </body>
 </html>
