@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire Vitrier Miroitier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+        }
+        .company-info, .client-info {
+            width: 48%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <center><h1>Formulaire Vitrier Miroitier</h1></center>
+        <div class="header">
+            <div class="company-info">
+                <h2>Entreprise</h2>
+                <p>Miroiterie de Clamart</p>
+                <p>31 Rue des Petits Ruisseaux</p>
+                <p>91370 Verrières le Buisson</p>
+            </div>
+            <div class="client-info">
+                <h2>Client</h2>
+                <label for="client-name">Nom :</label>
+                <input type="text" id="client-name" name="client-name" required>
+                <label for="client-address">Adresse :</label>
+                <textarea id="client-address" name="client-address" rows="3" required></textarea>
+            </div>
+        </div>
+
+        <form id="vitrier-form" action="mailto:votre-email@example.com" method="post" enctype="text/plain">
+            <h2>Détails de la commande</h2>
+            
+            <label for="type-verre">Type de verre :</label>
+            <select id="type-verre" name="type-verre" required>
+                <option value="">Sélectionnez un type</option>
+                <option value="simple">Verre simple</option>
+                <option value="double">Double vitrage</option>
+                <option value="securit">Verre sécurit</option>
+                <option value="miroir">Miroir</option>
+            </select>
+            
+            <label for="model-verre">Model de verre :</label>
+            <select id="model-verre" name="model-verre" required>
+                <option value="">Sélectionnez un model</option>
+                <option value="claire">Claire</option>
+                <option value="katedrale">Katedrale</option>
+                <option value="g200">G 200</option>
+                <option value="goute-deau">Goute d'eau</option>
+            </select>
+
+            <label for="dimensions">Dimensions (en cm) :</label>
+            <input type="text" id="dimensions" name="dimensions" placeholder="Largeur x Hauteur" required>
+            
+            <label for="epaisseur">Épaisseur du verre (en mm) :</label>
+            <input type="text" id="epaisseur" name="epaisseur" min="1" required>
+
+            <label for="quantite">Quantité :</label>
+            <input type="number" id="quantite" name="quantite" min="1" required>
+
+            <label for="traitement">Traitement spécial :</label>
+            <select id="traitement" name="traitement">
+                <option value="">Aucun</option>
+                <option value="anti-reflet">Anti-reflet</option>
+                <option value="anti-uv">Anti-UV</option>
+                <option value="auto-nettoyant">Auto-nettoyant</option>
+            </select>
+
+            <label for="installation">Installation requise :</label>
+            <input type="checkbox" id="installation" name="installation" value="oui">
+            <label for="installation" style="display:inline;">Oui</label>
+
+            <label for="date-installation">Date d'installation souhaitée :</label>
+            <input type="date" id="date-installation" name="date-installation">
+
+            <label for="commentaires">Commentaires supplémentaires :</label>
+            <textarea id="commentaires" name="commentaires" rows="4"></textarea>
+
+            <button type="submit">Envoyer la commande</button>
+        </form>
+    </div>
+</body>
+</html>
